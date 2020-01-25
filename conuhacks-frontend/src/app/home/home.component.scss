@@ -9,6 +9,11 @@
     flex-direction: column;
     font-family: Roboto;
     font-size: 21px;
+    .title{
+        margin-bottom: 100px; 
+        margin-top: 70px;
+        text-shadow: 0px 4px 4px 
+    }
   
     .button-container{
         display: flex;
@@ -21,3 +26,23 @@
         }
     }
 }
+
+@media (max-width: 600px){
+    .container{
+        background-image: url(../../assets/phonebckgnhome.jpg);
+        font-size: 15px;
+        .title{
+        margin-bottom: 90px; 
+        margin-top: 20px;
+        text-shadow: 0px 4px 4px 
+        }
+        .button-container{
+            .home-button{
+            margin: 10px;
+            width: 250px;
+            padding: 2px 2px;
+            font-size: 12px;
+            }
+        }
+    }
+    }
