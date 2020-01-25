@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 
 import {MatButtonModule} from '@angular/material/button';
 import { HomeComponent } from './home/home.component';
+import { RoomComponent } from './room/room.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    RoomComponent
   ],
   imports: [
     BrowserModule,
