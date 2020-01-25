@@ -1,9 +1,18 @@
+
 .container {
     background-image: url(../../assets/bckgnhome.jpg); 
     background-size: cover;
     height:100%;
     margin: 0;
     padding:0;
-    overflow: hidden
+    overflow: hidden;
 }
-
+.title {
+    text-align: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 42px;
+    color: #000000;
+}
