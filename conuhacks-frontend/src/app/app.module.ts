@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 
 import {MatButtonModule} from '@angular/material/button';
 import { HomeComponent } from './home/home.component';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { HomeComponent } from './home/home.component';
     BrowserModule,
     AppRoutingModule,
     MatButtonModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
