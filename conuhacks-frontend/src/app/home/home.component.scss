@@ -3,18 +3,21 @@
     background-image: url(../../assets/bckgnhome.jpg); 
     background-size: cover;
     height:100%;
-    margin: 0;
     padding:0;
     overflow: hidden;
     display: flex;
-    justify-content: center;
     flex-direction: column;
+    font-family: Roboto;
+    font-size: 21px;
+   
     .button-container{
         display: flex;
         flex-direction: column;
         .home-button{
-            width: 300px;
-            padding: 10px 10px;
+            margin: 20px;
+            width: 350px;
+            padding: 15px 15px;
+            font-size: 18px;
         }
     }
 }
