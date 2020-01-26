@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateSessionComponent implements OnInit {
 
+  hostName: string;
+  sessionName: string;
   constructor() { }
 
   ngOnInit() {
   }
-
+  submitForm(){
+    console.log(this.sessionName, this.hostName);
+    
+  }
 }
