@@ -9,7 +9,10 @@ import { HomeComponent } from './home/home.component';
 import { RoomComponent } from './room/room.component';
 
 import {RoomModule} from './room/room.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import {SessionModule } from './session/session.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 
 @NgModule({
   declarations: [
@@ -20,7 +23,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
     AppRoutingModule,
     MatButtonModule,
     RoomModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    SessionModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
