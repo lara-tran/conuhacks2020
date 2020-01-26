@@ -14,19 +14,19 @@
         margin-top: 70px;
     }
 
-    .cardContainer{
-        position: absolute;
-        width: 344px;
-        height: 369px;
-        left: 39px;
-        top: 150px;
+
         .join-session{
-            .input{
+
+            .card-title{
+            align-content: center;
+            }
+            .form-input{
                 display: flex;
+                align-items: center;
                 flex-direction: column;
                 }
         }
-    }
+    
 }
 
 @media (max-width: 600px){

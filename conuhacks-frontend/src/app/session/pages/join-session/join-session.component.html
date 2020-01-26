@@ -2,20 +2,28 @@
     <div class="title">
         <h1>LINK YOUR MUSIC</h1>
     </div>
-<div class="card-container" >
         <mat-card class="join-session">
-                <mat-card-header class="card-title">
+                <!-- <mat-card-header class="card-title">
                     <mat-card-title>Join A Session</mat-card-title>
-                </mat-card-header>
-                <div class="input">
-                <mat-form-field>
-                    <input placeholder="Guest Name">
-                    <input placeholder="Session Name">
-                </mat-form-field>
+                </mat-card-header> -->
+                <div class="header">
+                    <h2>Join A Session</h2>
                 </div>
-                <button class="home-button" routerLink="/join-session" mat-flat-button color="primary">CREATE</button>
+                <mat-card-content>
+                    <form >
+                        <div class="form-input">
+                                <mat-form-field>
+                                        <input [(ngModel)]="guestName" name="guestName" matInput placeholder="Guest Name">
+                                    </mat-form-field>
+                                    <mat-form-field>
+                                        <input [(ngModel)]="sessionName" name="sessionName" matInput placeholder="Session Name">
+                                    </mat-form-field>
+                        </div>
+
+                    </form>
+                </mat-card-content>
+                <button (click)="submitForm()" class="home-button" routerLink="/join-session" mat-flat-button color="primary">CREATE</button>
         </mat-card>
-</div>
 </div>
 
 
