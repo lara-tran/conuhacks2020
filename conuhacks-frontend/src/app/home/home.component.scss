@@ -1,7 +1,7 @@
 
 .container {
 
-    background-image: url(../../assets/bckgnhome.jpg); 
+    background-image: url(../../assets/bckgnhome.jpg);
     background-size: cover;
     height:100%;
     padding:0;
@@ -11,10 +11,10 @@
     font-size: 21px;
 
     .title{
-        margin-bottom: 100px; 
+        margin-bottom: 100px;
         margin-top: 70px;
     }
-  
+
     .button-container{
         display: flex;
         flex-direction: column;
@@ -36,11 +36,11 @@
         font-size: 15px;
 
         .title{
-        margin-bottom: 90px; 
+        margin-bottom: 90px;
         margin-top: 20px;
         }
         .button-container{
-            
+
             .home-button{
             margin: 10px;
             width: 250px;

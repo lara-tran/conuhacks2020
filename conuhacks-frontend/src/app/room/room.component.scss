@@ -1,0 +1,101 @@
+html {
+    background-image: url('../../assets/bckgn.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height:110%;
+}
+p{
+    margin: 0;
+}
+
+#exit{
+    display: flex;
+    align-items: flex-end;
+    margin-top: 10px;
+    margin-right: 5px;
+}
+
+.user{
+    margin-left: 20px;
+    margin-top: 10px;
+}
+ 
+.inline-left-spacebetween{
+    display: flex;
+    justify-content: space-between;
+}
+.inline-right{
+    display: flex;
+    justify-content: flex-end;
+}
+.inline{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.mat-card{
+    margin-top: 20px;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    background:rgba($color: #000000, $alpha: 0);
+    box-shadow: none;
+}
+
+.justify-center{
+    display: flex;
+    justify-content: center;
+}
+
+.inner-mat-card{
+    display: flex;
+    justify-content: center;
+    width: auto;
+    padding: 0.5%;
+    font-size: 150%;
+}
+
+.session-movement{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.material-icons{
+    display: flex;
+    justify-content: center;
+    font-size: 500%;
+}
+
+.inner-mat-card-name{
+    font-size: 100%;
+}
+
+.inner-mat-card-song{
+    font-size: 125%;
+}
+
+#button::before{
+    display: flex;
+    justify-content: center;
+    min-width: 70px;
+    min-height: 70px;
+}
+.mat-icon{
+    min-width: 70px;
+    min-height: 70px;
+}
+
+.queue{
+    margin-top: 20px;
+    background-color: rgba($color: #000000, $alpha: 0.5);
+}
+
+.queue-div{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}

@@ -1,0 +1,46 @@
+<html>
+<div class= "inline">    
+    <div class="inline-left-spacebetween" > 
+        <div class="user" *ngFor="let guest of guestList">
+            <app-circle [guest]= guest></app-circle>
+        </div>
+    </div>
+    <div class="inline-right"> 
+    <img id="exit" src= "../../assets/exit.svg">
+    </div>
+</div>
+<div class="justify-center">
+<mat-card class="mat-card">
+    <mat-card-title class="inner-mat-card">Session Name</mat-card-title>
+    <mat-card-subtitle class="inner-mat-card-song inner-mat-card">Song Name</mat-card-subtitle>
+    <mat-card-subtitle class="inner-mat-card-name inner-mat-card">Artist Name</mat-card-subtitle>
+    <img mat-card-image class="inner-mat-card" src="../../assets/exit.svg" alt="Photo of a Song">
+    <mat-card-subtitle class="inner-mat-card-song inner-mat-card">Upcoming Song</mat-card-subtitle>
+    <mat-card-subtitle class="inner-mat-card-name inner-mat-card" >Upcoming Artist</mat-card-subtitle>
+</mat-card>
+</div>
+<div class="justify-center">
+    <mat-card class="session-movement">
+        <button mat-button>
+            <i class="material-icons">fast_rewind</i>
+        </button>
+        <div class="box">    
+        <button mat-button (click)="toggle(this)" id="button">
+            <mat-icon class="material-icon">{{iconName}}</mat-icon>
+        </button>
+        </div>
+        <button mat-button>
+            <i class="material-icons">fast_forward</i>
+        </button>
+    </mat-card>
+</div>
+<div class="queue-div">
+    <button mat-button class="queue">
+        ADD TO QUEUE
+    </button>
+
+    <button mat-button class="queue">
+        VIEW QUEUE
+    </button>
+</div>
+</html>    
