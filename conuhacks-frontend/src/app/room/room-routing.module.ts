@@ -5,7 +5,7 @@ import { RoomComponent } from './room.component';
 
 
 const routes: Routes = [
-  { path: 'room', component: RoomComponent }
+  { path: 'room/:sessionName', component: RoomComponent }
 ];
 
 @NgModule({

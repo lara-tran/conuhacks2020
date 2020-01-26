@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SessionHttpClientService } from '../../services/session-http-client.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-join-session',
@@ -9,13 +11,15 @@ export class JoinSessionComponent implements OnInit {
 
   guestName: string;
   sessionName: string;
-  constructor() { }
+  constructor(private sessionService: SessionHttpClientService, private router: Router) { }
 
   ngOnInit() {
   }
   submitForm(){
-    console.log(this.sessionName, this.guestName);
-    
+
+    this.sessionService.joinSession(this.guestName, this.sessionName).subscribe(() => {
+      this.router.navigate([`/room/${this.sessionName}`]);
+    });
   }
 
 }

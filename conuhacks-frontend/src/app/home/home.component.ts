@@ -9,8 +9,14 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+  createSession(){
+    this.router.navigate(['/create-session']);
+  }
+  joinSession(){
+    this.router.navigate(['/join-session']);
   }
 }
