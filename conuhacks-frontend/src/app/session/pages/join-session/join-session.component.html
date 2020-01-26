@@ -4,12 +4,14 @@
     </div>
 <div class="card-container" >
         <mat-card class="join-session">
-                <mat-card-header class="card-title align-items-center">
+                <mat-card-header class="card-title">
                     <mat-card-title>Join A Session</mat-card-title>
                 </mat-card-header>
                 <div class="input">
-                <textarea>Guest Name</textarea>
-                <textarea>Session Name</textarea>
+                <mat-form-field>
+                    <input placeholder="Guest Name">
+                    <input placeholder="Session Name">
+                </mat-form-field>
                 </div>
                 <button class="home-button" routerLink="/join-session" mat-flat-button color="primary">CREATE</button>
         </mat-card>
