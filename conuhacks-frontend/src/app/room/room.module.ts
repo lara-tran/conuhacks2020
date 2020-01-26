@@ -7,9 +7,6 @@ import {MatCardModule, MatButtonModule, MatRippleModule} from '@angular/material
 import {MatIconModule} from '@angular/material/icon';
 
 
-
-
-
 @NgModule({
   declarations: [RoomComponent, CircleComponent],
   imports: [

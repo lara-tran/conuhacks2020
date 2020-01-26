@@ -28,6 +28,13 @@ export class RoomComponent implements OnInit {
     this.iconName="play_circle_filled";
     }
   }
+
+  viewQueue(){
+
+   // this.router.navigate(['/login']);
+
+
+  }
    
   ngOnInit(){
     
