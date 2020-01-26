@@ -16,11 +16,12 @@ export class SpotifyService {
   infoUrl ="https://api.spotify.com/v1/me/player";
   nextUrl ="https://api.spotify.com/v1/me/player/next";
   previousUrl ="https://api.spotify.com/v1/me/player/previous";
+  currentUrl ="https://api.spotify.com/v1/me/player/currently-playing";
 
 
   constructor(private httpClient: HttpClient) {}
 
-  searchSong(query: string, type = 'track') {
+  searchSong(name: string,artist: string = null,  type = 'track') {
 
     let headers = new HttpHeaders({
       "Content-Type": "application/json",
@@ -30,19 +31,29 @@ export class SpotifyService {
 
     var params = new HttpParams();
 
-    params = params.set("q", 'name:'+query);
+    if(artist){
+      params = params.set("q", 'name:'+ name +'+artist:' + artist);
+    }else{
+      params = params.set("q", 'name:'+ name);
+
+    }
     params = params.set("type", type);
 
     return this.httpClient.get<any>(this.searchUrl, { headers, params });
   }
-  playSong(){
+  playSong(uri: string = null){
     let headers = new HttpHeaders({
       "Content-Type": "application/json",
       "Authorization": 'Bearer ' + window.localStorage.getItem('access_token')
     });
     var params = new HttpParams();
+    if(uri){
+      return this.httpClient.put(this.playUrl,{uris:[uri]}, {headers, params});
 
-    return this.httpClient.put(this.playUrl,{}, {headers, params});
+    } else{
+      return this.httpClient.put(this.playUrl,{}, {headers, params});
+    }
+
 
   }
   pauseSong(){
@@ -81,5 +92,14 @@ export class SpotifyService {
     var params = new HttpParams();
 
     return this.httpClient.post(this.previousUrl,{}, {headers, params});
+  }
+
+  currentSong(){
+    let headers = new HttpHeaders({
+      "Content-Type": "application/json",
+      "Authorization": 'Bearer ' + window.localStorage.getItem('access_token')
+    });
+    var params = new HttpParams();
+    return this.httpClient.get<any>(this.currentUrl, {headers, params});
   }
 }

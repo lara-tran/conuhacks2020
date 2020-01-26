@@ -15,11 +15,9 @@
 <div class="justify-center">
 <mat-card *ngIf="session" class="mat-card">
     <mat-card-title class="inner-mat-card">{{session?.sessionName}}</mat-card-title>
-    <mat-card-subtitle class="inner-mat-card-song inner-mat-card">Song Name</mat-card-subtitle>
-    <mat-card-subtitle class="inner-mat-card-name inner-mat-card">Artist Name</mat-card-subtitle>
-    <img mat-card-image class="inner-mat-card" src="../../assets/exit.svg" alt="Photo of a Song">
-    <mat-card-subtitle class="inner-mat-card-song inner-mat-card">Upcoming Song</mat-card-subtitle>
-    <mat-card-subtitle class="inner-mat-card-name inner-mat-card" >Upcoming Artist</mat-card-subtitle>
+    <mat-card-subtitle class="inner-mat-card-song inner-mat-card">{{currentSong?.name}}</mat-card-subtitle>
+    <mat-card-subtitle class="inner-mat-card-name inner-mat-card">{{currentSong?.artist}}</mat-card-subtitle>
+    <img  mat-card-image  src="{{currentSong.image}}" alt="Photo of a Song">
 </mat-card>
 </div>
 <div class="justify-center">
