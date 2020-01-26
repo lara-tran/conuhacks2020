@@ -12,12 +12,16 @@ import {RoomModule} from './room/room.module';
 import {SessionModule } from './session/session.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import {QueueComponent} from './queue/queue.component';
+import {QueueModule} from './queue/queue.module';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent  ],
+    HomeComponent,
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -25,6 +29,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     RoomModule,
     BrowserAnimationsModule,
     SessionModule,
+    QueueModule
   ],
   providers: [],
   bootstrap: [AppComponent]

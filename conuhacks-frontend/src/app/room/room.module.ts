@@ -6,8 +6,7 @@ import { CircleComponent } from './circle/circle.component';
 import {MatCardModule, MatButtonModule, MatRippleModule} from '@angular/material';
 import {MatIconModule} from '@angular/material/icon';
 import { SessionModule } from '../session/session.module';
-
-
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -20,7 +19,8 @@ import { SessionModule } from '../session/session.module';
     MatButtonModule,
     MatIconModule,
     MatRippleModule,
-    SessionModule
+    SessionModule,
+    HttpClientModule
   ],
   exports: [CircleComponent]
 })

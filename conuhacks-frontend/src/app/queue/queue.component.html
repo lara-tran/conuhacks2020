@@ -1,0 +1,12 @@
+<html>
+    <mat-card class="title-card">
+        <div class="artist-info">
+            <mat-card-title class="title">Song Queue</mat-card-title>
+        </div>
+    </mat-card>
+    <div class="user" *ngFor="let song of songList">
+        <mat-card class="queue-list">
+            <app-song [inputSong]= "song"></app-song>
+        </mat-card>
+    </div>
+</html>
