@@ -96,10 +96,10 @@ app.post("/session/leave", async (req, res) => {
   }
 });
 app.delete("/session", async (req, res) => {
-  const session = await sessionModel.findOne({ name: req.body.sessionName });
+  const session = await sessionModel.findOne({ sessionName: req.body.sessionName });
   if (session) {
     try {
-      await sessionModel.deleteOne({ name: req.body.sessionName });
+      await sessionModel.deleteOne({ sessionName: req.body.sessionName });
 
       await session.save();
     } catch (err) {
@@ -132,8 +132,8 @@ app.get("/queue/:sessionName", async (req, res) => {
 });
 
 //remove
-app.delete("/queue", async(req,res)=> {
-  const song = await queueModel.findOne({ songName: req.body.songName, artist: req.body.artist, sessionName:req.body.sessionName});
+app.post("/queue/delete", async(req,res)=> {
+  const song = await queueModel.findOne({ songName: req.body.songName, artistName: req.body.artistName, sessionName:req.body.sessionName});
   if(song){
     try{
       await queueModel.deleteOne(song);

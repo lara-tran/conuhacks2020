@@ -4,7 +4,7 @@ import { SessionHttpClientService } from "../session/services/session-http-clien
 import { Session } from "../session/models/session";
 import { SpotifyService } from "./services/spotify.service";
 import { Song } from "./song";
-import { QueueServiceService } from './services/queue-service.service';
+import { QueueServiceService } from "./services/queue-service.service";
 
 @Component({
   selector: "app-room",
@@ -74,30 +74,38 @@ export class RoomComponent implements OnInit {
     });
   }
   fastForward() {
-    this.queueService.getSongs().subscribe((res)=>{
-      const nextSong = res[0];
-      this.spotifyService.playSong(nextSong.uri).subscribe((res)=>{
-      setTimeout(() => {
-        this.spotifyService.currentSong().subscribe(r => {
-          this.currentSong = {
-            artist: r.item.artists[0].name,
-            name: r.item.name,
-            image: r.item.album.images[1].url
-          };
+    this.queueService.getSongs().subscribe(res => {
+      if (res.length != 0) {
+        console.log(res);
+
+        const nextSong = res[0];
+        this.spotifyService.playSong(nextSong.uri).subscribe(res => {
+          this.queueService.removeSong(nextSong).subscribe(res => {
+            setTimeout(() => {
+              this.spotifyService.currentSong().subscribe(r => {
+                this.currentSong = {
+                  artist: r.item.artists[0].name,
+                  name: r.item.name,
+                  image: r.item.album.images[1].url
+                };
+              });
+            }, 3000);
+          });
         });
-      }, 3000);      });
+      } else {
+        this.spotifyService.nextSong().subscribe(res => {
+          setTimeout(() => {
+            this.spotifyService.currentSong().subscribe(r => {
+              this.currentSong = {
+                artist: r.item.artists[0].name,
+                name: r.item.name,
+                image: r.item.album.images[1].url
+              };
+            });
+          }, 3000);
+        });
+      }
     });
-    // this.spotifyService.nextSong().subscribe(res => {
-    //   setTimeout(() => {
-    //     this.spotifyService.currentSong().subscribe(r => {
-    //       this.currentSong = {
-    //         artist: r.item.artists[0].name,
-    //         name: r.item.name,
-    //         image: r.item.album.images[1].url
-    //       };
-    //     });
-    //   }, 3000);
-    // });
   }
   previousTrack() {
     this.spotifyService.previousSong().subscribe(res => {

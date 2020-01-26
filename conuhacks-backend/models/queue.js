@@ -4,7 +4,7 @@ const QueueSchema = new mongoose.Schema({
   songName: {
     type: String,
   },
-  artist: {
+  artistName: {
     type: String
   },
   sessionName:{

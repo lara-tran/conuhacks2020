@@ -18,7 +18,7 @@ export class JoinSessionComponent implements OnInit {
   submitForm(){
 
     this.sessionService.joinSession(this.guestName, this.sessionName).subscribe(() => {
-      this.router.navigate([`/room/${this.sessionName}`]);
+      this.router.navigate([`/room/partyhub`]);
     });
   }
 
