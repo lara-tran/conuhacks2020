@@ -6,6 +6,9 @@ const QueueSchema = new mongoose.Schema({
   },
   artist: {
     type: String
+  },
+  sessionName:{
+    type: String
   }
 });
 
