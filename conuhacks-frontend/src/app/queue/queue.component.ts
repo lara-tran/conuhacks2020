@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { QueueServiceService } from '../room/services/queue-service.service';
 
 
 @Component({
@@ -8,11 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QueueComponent implements OnInit {
 
-  songList = [['../../assets/exit.svg', 'Song','Finn'],['../../assets/exit.svg', 'adng','adnn']];
+  // songList = [['../../assets/exit.svg', 'Song','Finn'],['../../assets/exit.svg', 'adng','adnn']];
 
-  constructor() { }
+  songList: Array<any>;
+  constructor(private queueService: QueueServiceService) { }
 
   ngOnInit() {
+    this.queueService.getSongs().subscribe(res => this.songList = res);
   }
 
 }

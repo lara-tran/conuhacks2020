@@ -4,6 +4,7 @@ import { SongComponent} from './song/song.component';
 import { QueueRoutinModule} from './queue-routin.module';
 import { QueueComponent } from './queue.component';
 import { MatCardModule} from '@angular/material/card';
+import {RoomModule} from'../room/room.module'
 
 
 
@@ -13,6 +14,7 @@ import { MatCardModule} from '@angular/material/card';
     CommonModule,
     QueueRoutinModule,
     MatCardModule,
+    RoomModule
   ],
   exports: [SongComponent,QueueComponent]
 })

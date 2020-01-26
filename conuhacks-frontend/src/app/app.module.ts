@@ -11,6 +11,7 @@ import { RoomComponent } from './room/room.component';
 import {RoomModule} from './room/room.module';
 import {SessionModule } from './session/session.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SearchBarComponent } from './search/search-bar/search-bar.component';
 
 import {QueueComponent} from './queue/queue.component';
 import {QueueModule} from './queue/queue.module';
@@ -21,7 +22,7 @@ import {QueueModule} from './queue/queue.module';
   declarations: [
     AppComponent,
     HomeComponent,
-    ],
+    SearchBarComponent  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

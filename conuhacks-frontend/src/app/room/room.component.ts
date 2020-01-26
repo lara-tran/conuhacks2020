@@ -18,10 +18,11 @@ export class RoomComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private sessionService: SessionHttpClientService,
-    private spotifyService: SpotifyService
+    private spotifyService: SpotifyService,private router: Router
   ) {
     this.iconName = "play_circle_filled";
   }
+ 
 
   toggle() {
     if (this.iconName == "play_circle_filled") {
@@ -45,15 +46,16 @@ export class RoomComponent implements OnInit {
       this.sessionService.getSession(this.sessionName).subscribe(res => {
         this.session = res;
       });
-    });
-    this.route.queryParams.subscribe(params => {
-      const myStorage = window.localStorage;
-      const access_token = params["access_token"];
-      const refresh_token = params["refresh_token"];
-
-      myStorage.setItem("access_token", access_token);
+      this.route.queryParams.subscribe(params => {
+        const myStorage = window.localStorage;
+        const access_token = params["access_token"];
+        const refresh_token = params["refresh_token"];
+  
+        myStorage.setItem("access_token", access_token);
+      });
     });
   }
+
   search() {
     this.spotifyService.searchSong("hello").subscribe(res => {
       console.log(res);
@@ -68,5 +70,9 @@ export class RoomComponent implements OnInit {
     this.spotifyService.previousSong().subscribe(res => {
       console.log(res);
     });
+  }
+
+  openSearch(){
+    this.router.navigate(['/search']);
   }
 }
