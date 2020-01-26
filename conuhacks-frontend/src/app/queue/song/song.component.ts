@@ -8,12 +8,10 @@ import { Component, OnInit, Input } from '@angular/core';
 export class SongComponent implements OnInit {
 
   @Input() inputSong: Object[];
-  song: Object[];
 
   constructor() { }
 
   ngOnInit() {
-    this.song = this.inputSong;
   }
 
 }

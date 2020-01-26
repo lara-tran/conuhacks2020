@@ -1,16 +1,16 @@
 <div class="container" align="center">
 <form >
     <mat-form-field>
-        <input matInput placeholder="Search" [(ngModel)]="searchTerm">
+        <input name="search" matInput placeholder="Search" [(ngModel)]="searchTerm">
     </mat-form-field>
     <button mat-button (click)="search()">Search</button>
 </form>
 
 <mat-list class="songsFound">
         <h3 mat-subheader>Songs Found</h3>
-        <mat-list-item *ngFor="let songs of songs">    
-          <h4 mat-line>{{song.name}}</h4>
-          <p mat-line>{{song.artist}}</p>
+        <mat-list-item *ngFor="let song of songs; let i = index">    
+          <h4 (click)="addSong(i)" mat-line>{{song.name}}</h4>
+          <p mat-line>{{song.artists[0].name }}</p>
         </mat-list-item>
         <mat-divider></mat-divider>
 </mat-list>

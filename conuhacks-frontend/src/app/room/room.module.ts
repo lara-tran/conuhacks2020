@@ -12,6 +12,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import {MatListModule} from '@angular/material/list';
+import { QueueServiceService } from './services/queue-service.service';
 
 
 
@@ -33,6 +34,7 @@ import {MatListModule} from '@angular/material/list';
     HttpClientModule,
     MatListModule
   ],
-  exports: [CircleComponent]
+  exports: [CircleComponent],
+  providers:[QueueServiceService]
 })
 export class RoomModule { }

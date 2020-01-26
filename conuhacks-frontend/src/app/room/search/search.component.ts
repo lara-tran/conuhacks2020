@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SpotifyService } from '../services/spotify.service';
+import { QueueServiceService } from '../services/queue-service.service';
+import { Song } from '../song';
 
-export interface Song{
-  //art: string,
-  name: string,
-  artist: string
-}
 
 @Component({
   selector: 'app-search',
@@ -16,7 +14,8 @@ export interface Song{
 export class SearchComponent implements OnInit {
 
   searchTerm: string;
-  constructor(private router: Router) { }
+  songs: any;
+  constructor(private router: Router, private spotifyService: SpotifyService, private queueService: QueueServiceService) { }
 
   ngOnInit() {
   }
@@ -25,20 +24,16 @@ export class SearchComponent implements OnInit {
 
   }
   search(){
-    console.log("searched a song");
-    let songs: Song[] = [
-      {
-        name: 'a',
-        artist: 'b',
-      },
-      {
-        name: 'adfaf',
-        artist: 'b',
-      }
-    ];
-    return songs;
+    this.spotifyService.searchSong(this.searchTerm).subscribe((res)=>{      
+      this.songs = res.tracks.items.slice(0,10);
+    });
   }
-  addSong(){
-    this.router.navigate(['/room']);
+  addSong(i: number){
+    let song = this.songs[i];
+    let newSong:Song = {sessionName: "partyhub", artist:song.artists[0].name, songName: song.name};
+    this.queueService.addSong(newSong).subscribe((res)=>{
+
+      this.router.navigate(['/room/partyhub']);
+    });
   }
 }

@@ -20,8 +20,7 @@ export class SpotifyService {
 
   constructor(private httpClient: HttpClient) {}
 
-  searchSong(query: string, type = 'track,album') {
-    console.log(window.localStorage.getItem('access_token'));
+  searchSong(query: string, type = 'track') {
 
     let headers = new HttpHeaders({
       "Content-Type": "application/json",
