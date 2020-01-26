@@ -54,7 +54,7 @@ app.post("/session/create", async (req, res) => {
 
 //get sessions
 app.get("/session/:sessionName", async (req, res) => {
-  const session = await sessionModel.find({sessionName: req.sessionName});
+  const session = await sessionModel.findOne({sessionName: req.params.sessionName});
 
   try {
     res.send(session);
@@ -78,16 +78,17 @@ app.post("/session/join", async (req, res) => {
 });
 //leave session
 app.post("/session/leave", async (req, res) => {
-  // const session = await sessionModel.findOneAndUpdate({name: req.body.sessionName}, {$pull: {guests: req.body.guestName}});
-  const session = await sessionModel.findOne({ name: req.body.sessionName });
+  let session = await sessionModel.findOne({ sessionName: req.body.sessionName });
+  console.log(req.body);
   try {
-    if (session.hostName === req.body.guestName) {
-      await sessionModel.deleteOne({ name: req.body.sessionName });
-    } else {
+    if (session.hostName !== req.body.guestName) {
       session = await sessionModel.findOneAndUpdate(
         { name: req.body.sessionName },
         { $pull: { guests: req.body.guestName } }
       );
+    } else {
+      await sessionModel.deleteOne({ name: req.body.sessionName });
+
     }
     await session.save();
   } catch (err) {

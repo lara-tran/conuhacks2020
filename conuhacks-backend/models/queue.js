@@ -9,6 +9,9 @@ const QueueSchema = new mongoose.Schema({
   },
   sessionName:{
     type: String
+  },
+  uri:{
+    type: String
   }
 });
 
