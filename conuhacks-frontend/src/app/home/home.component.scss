@@ -1,5 +1,6 @@
 
 .container {
+
     background-image: url(../../assets/bckgnhome.jpg); 
     background-size: cover;
     height:100%;
@@ -7,36 +8,39 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    // font-family: Roboto;
     font-size: 21px;
+
     .title{
         margin-bottom: 100px; 
         margin-top: 70px;
-        // text-shadow: 0px 4px 4px 
     }
   
     .button-container{
         display: flex;
         flex-direction: column;
+
         .home-button{
             margin: 20px;
             width: 350px;
             padding: 15px 15px;
             font-size: 18px;
         }
+
     }
 }
 
 @media (max-width: 600px){
+
     .container{
         background-image: url(../../assets/phonebckgnhome.jpg);
         font-size: 15px;
+
         .title{
         margin-bottom: 90px; 
         margin-top: 20px;
-        // text-shadow: 0px 4px 4px 
         }
         .button-container{
+            
             .home-button{
             margin: 10px;
             width: 250px;
@@ -45,4 +49,4 @@
             }
         }
     }
-    }
+}
