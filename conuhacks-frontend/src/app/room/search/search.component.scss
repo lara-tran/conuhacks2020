@@ -3,10 +3,26 @@
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
-    height:110%;
+    height:150%;
+    border: none;
+    box-shadow: none;
 .soundsFound{
-    width: 500px;
+    width: 50%;
     justify-content: center;
     align-items: center;
+    text-align: center;
+    box-shadow: none;
+    border: none;
 }
+}
+
+.mat-divider{
+    border: none;
+}
+mat-button{
+    text-decoration: none;
+}
+.center{
+    display: flex;
+    justify-content: center;
 }
