@@ -18,6 +18,9 @@ export class JoinSessionComponent implements OnInit {
   submitForm(){
 
     this.sessionService.joinSession(this.guestName, this.sessionName).subscribe(() => {
+      const myStorage = window.localStorage;
+      myStorage.setItem("name", this.guestName);
+
       this.router.navigate([`/test`]);
     });
   }

@@ -68,6 +68,14 @@ export class RoomComponent implements OnInit {
     });
   }
 
+  exit(){
+    const myStorage = window.localStorage;
+    const name = myStorage.getItem("name");
+    this.sessionService.leaveSession(name, 'partyhub').subscribe((res)=>{
+      this.router.navigate(['/']);
+    })
+  }
+
   search() {
     this.spotifyService.searchSong("hello").subscribe(res => {
       console.log(res);
