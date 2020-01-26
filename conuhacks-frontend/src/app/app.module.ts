@@ -11,13 +11,15 @@ import { RoomComponent } from './room/room.component';
 import {RoomModule} from './room/room.module';
 import {SessionModule } from './session/session.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SearchBarComponent } from './search/search-bar/search-bar.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent  ],
+    HomeComponent,
+    SearchBarComponent  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

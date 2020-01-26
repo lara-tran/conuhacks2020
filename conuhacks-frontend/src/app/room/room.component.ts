@@ -16,7 +16,7 @@ export class RoomComponent implements OnInit {
   guestList = ['Finn', 'Lara', 'Zohal', 'Loujain'];
   iconName : string;
 
-  constructor() {
+  constructor(private router: Router) {
     this.iconName= "play_circle_filled"
   }
   
@@ -31,5 +31,9 @@ export class RoomComponent implements OnInit {
    
   ngOnInit(){
     
+  }
+
+  openSearch(){
+    this.router.navigate(['/search']);
   }
 }
