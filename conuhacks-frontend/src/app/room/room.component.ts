@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { SessionHttpClientService } from '../session/services/session-http-client.service';
 import { Session } from '../session/models/session';
+import { SpotifyService } from './services/spotify.service';
 
 @Component({
   selector: "app-room",
@@ -14,16 +15,25 @@ export class RoomComponent implements OnInit {
   sessionName: string;
   session: Session;
 
-  constructor(private route: ActivatedRoute, private sessionService: SessionHttpClientService) {
+  constructor(private route: ActivatedRoute, private sessionService: SessionHttpClientService, private spotifyService: SpotifyService) {
     this.iconName = "play_circle_filled";
   }
 
   toggle() {
     if (this.iconName == "play_circle_filled") {
       this.iconName = "pause_circle_filled";
+      this.spotifyService.playSong().subscribe((res) => {
+        console.log(res);
+      });
+
     } else {
       this.iconName = "play_circle_filled";
+      this.spotifyService.pauseSong().subscribe((res) => {
+        console.log(res);
+      });
     }
+
+    // this.spotifyService.getInfo().subscribe(res => console.log(res));
   }
 
   ngOnInit() {
@@ -33,6 +43,30 @@ export class RoomComponent implements OnInit {
         this.session = res;
       });
     });
+    this.route.queryParams.subscribe(params => {
+     const myStorage = window.localStorage;
+     const access_token = params['access_token'];
+     const refresh_token = params['refresh_token'];
 
+     myStorage.setItem('access_token', access_token);
+    });
   }
+  search(){
+    this.spotifyService.searchSong('hello').subscribe((res) => {
+      console.log(res);
+    })
+  };
+  fastForward(){
+    this.spotifyService.nextSong().subscribe((res) => {
+      console.log(res);
+
+    })
+  };
+  previousTrack(){
+    this.spotifyService.previousSong().subscribe((res)=>{
+      console.log(res);
+    })
+  }
+
+
 }

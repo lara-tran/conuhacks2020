@@ -24,7 +24,7 @@
 </div>
 <div class="justify-center">
     <mat-card class="session-movement">
-        <button mat-button>
+        <button (click) = "previousTrack()" mat-button>
             <i class="material-icons">fast_rewind</i>
         </button>
         <div class="box">
@@ -32,7 +32,7 @@
             <mat-icon class="material-icon">{{iconName}}</mat-icon>
         </button>
         </div>
-        <button mat-button>
+        <button (click)="fastForward()" mat-button>
             <i class="material-icons">fast_forward</i>
         </button>
     </mat-card>
@@ -42,7 +42,7 @@
         ADD TO QUEUE
     </button>
 
-    <button mat-button class="queue">
+    <button (click)="search()" mat-button class="queue">
         VIEW QUEUE
     </button>
 </div>
