@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const SessionSchema = new mongoose.Schema({
-  name: {
+  sessionName: {
     type: String,
     required: true,
     trim: true,

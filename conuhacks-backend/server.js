@@ -62,7 +62,10 @@ app.get("/session", async (req, res) => {
 
 //join session
 app.post("/session/join", async (req, res) => {
-  const session = await sessionModel.findOneAndUpdate({name: req.body.sessionName}, {$push: {guests: req.body.guestName}});
+  const session = await sessionModel.findOneAndUpdate(
+    { name: req.body.sessionName },
+    { $push: { guests: req.body.guestName } }
+  );
   try {
     await session.save();
     res.send(session);
@@ -72,12 +75,32 @@ app.post("/session/join", async (req, res) => {
 });
 //leave session
 app.post("/session/leave", async (req, res) => {
-  const session = await sessionModel.findOneAndUpdate({name: req.body.sessionName}, {$pull: {guests: req.body.guestName}});
+  // const session = await sessionModel.findOneAndUpdate({name: req.body.sessionName}, {$pull: {guests: req.body.guestName}});
+  const session = await sessionModel.findOne({ name: req.body.sessionName });
   try {
+    if (session.hostName === req.body.guestName) {
+      await sessionModel.deleteOne({ name: req.body.sessionName });
+    } else {
+      session = await sessionModel.findOneAndUpdate(
+        { name: req.body.sessionName },
+        { $pull: { guests: req.body.guestName } }
+      );
+    }
     await session.save();
-    res.send(session);
   } catch (err) {
     res.status(500).send(err);
+  }
+});
+app.delete("/session", async (req, res) => {
+  const session = await sessionModel.findOne({ name: req.body.sessionName });
+  if (session) {
+    try {
+      await sessionModel.deleteOne({ name: req.body.sessionName });
+
+      await session.save();
+    } catch (err) {
+      res.status(500).send(err);
+    }
   }
 });
 
@@ -103,3 +126,17 @@ app.get("/queue/:sessionName", async (req, res) => {
     res.status(500).send(err);
   }
 });
+
+//remove
+app.delete("/queue", async(req,res)=> {
+  const song = await queueModel.findOne({ songName: req.body.songName, artist: req.body.artist, sessionName:req.body.sessionName});
+  if(song){
+    try{
+      await queueModel.deleteOne(song);
+      res.send();
+    } catch (err) {
+      res.status(500).send(err);
+    }
+  }
+  
+})
