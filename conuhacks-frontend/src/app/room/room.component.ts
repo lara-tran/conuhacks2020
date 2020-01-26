@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
-import { SessionHttpClientService } from '../session/services/session-http-client.service';
-import { Session } from '../session/models/session';
-import { SpotifyService } from './services/spotify.service';
+import { SessionHttpClientService } from "../session/services/session-http-client.service";
+import { Session } from "../session/models/session";
+import { SpotifyService } from "./services/spotify.service";
 
 @Component({
   selector: "app-room",
@@ -15,20 +15,23 @@ export class RoomComponent implements OnInit {
   sessionName: string;
   session: Session;
 
-  constructor(private route: ActivatedRoute, private sessionService: SessionHttpClientService, private spotifyService: SpotifyService) {
+  constructor(
+    private route: ActivatedRoute,
+    private sessionService: SessionHttpClientService,
+    private spotifyService: SpotifyService
+  ) {
     this.iconName = "play_circle_filled";
   }
 
   toggle() {
     if (this.iconName == "play_circle_filled") {
       this.iconName = "pause_circle_filled";
-      this.spotifyService.playSong().subscribe((res) => {
+      this.spotifyService.playSong().subscribe(res => {
         console.log(res);
       });
-
     } else {
       this.iconName = "play_circle_filled";
-      this.spotifyService.pauseSong().subscribe((res) => {
+      this.spotifyService.pauseSong().subscribe(res => {
         console.log(res);
       });
     }
@@ -38,35 +41,32 @@ export class RoomComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.sessionName = params['sessionName'];
-      this.sessionService.getSession(this.sessionName).subscribe((res) => {
+      this.sessionName = params["sessionName"];
+      this.sessionService.getSession(this.sessionName).subscribe(res => {
         this.session = res;
       });
     });
     this.route.queryParams.subscribe(params => {
-     const myStorage = window.localStorage;
-     const access_token = params['access_token'];
-     const refresh_token = params['refresh_token'];
+      const myStorage = window.localStorage;
+      const access_token = params["access_token"];
+      const refresh_token = params["refresh_token"];
 
-     myStorage.setItem('access_token', access_token);
+      myStorage.setItem("access_token", access_token);
     });
   }
-  search(){
-    this.spotifyService.searchSong('hello').subscribe((res) => {
+  search() {
+    this.spotifyService.searchSong("hello").subscribe(res => {
       console.log(res);
-    })
-  };
-  fastForward(){
-    this.spotifyService.nextSong().subscribe((res) => {
-      console.log(res);
-
-    })
-  };
-  previousTrack(){
-    this.spotifyService.previousSong().subscribe((res)=>{
-      console.log(res);
-    })
+    });
   }
-
-
+  fastForward() {
+    this.spotifyService.nextSong().subscribe(res => {
+      console.log(res);
+    });
+  }
+  previousTrack() {
+    this.spotifyService.previousSong().subscribe(res => {
+      console.log(res);
+    });
+  }
 }
