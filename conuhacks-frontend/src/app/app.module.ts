@@ -6,8 +6,8 @@ import { AppComponent } from './app.component';
 
 import {MatButtonModule} from '@angular/material/button';
 import {HomeComponent} from './home/home.component';
-import {MatCardModule} from '@angular/material/card';
-import { SessionModule } from './session/session.module';
+import {SessionModule } from './session/session.module';
+
 
 @NgModule({
   declarations: [
@@ -18,7 +18,6 @@ import { SessionModule } from './session/session.module';
     BrowserModule,
     AppRoutingModule,
     MatButtonModule,
-    MatCardModule,
     SessionModule
   ],
   providers: [],
