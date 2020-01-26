@@ -20,20 +20,20 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
   }
   cancel(){
-    this.router.navigate(['/room']);
+    this.router.navigate(['/test']);
 
   }
   search(){
-    this.spotifyService.searchSong(this.searchTerm).subscribe((res)=>{      
+    this.spotifyService.searchSong(this.searchTerm).subscribe((res)=>{
       this.songs = res.tracks.items.slice(0,10);
     });
   }
   addSong(i: number){
     let song = this.songs[i];
-    let newSong:Song = {sessionName: "partyhub", artist:song.artists[0].name, songName: song.name};
+    let newSong:Song = {sessionName: "partyhub", artistName:song.artists[0].name, songName: song.name, uri: song.uri};
     this.queueService.addSong(newSong).subscribe((res)=>{
 
-      this.router.navigate(['/room/partyhub']);
+      this.router.navigate(['/test']);
     });
   }
 }

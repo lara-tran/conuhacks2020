@@ -3,6 +3,8 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { SessionHttpClientService } from "../session/services/session-http-client.service";
 import { Session } from "../session/models/session";
 import { SpotifyService } from "./services/spotify.service";
+import { Song } from "./song";
+import { QueueServiceService } from "./services/queue-service.service";
 
 @Component({
   selector: "app-room",
@@ -14,15 +16,17 @@ export class RoomComponent implements OnInit {
   iconName: string;
   sessionName: string;
   session: Session;
+  currentSong: any;
 
   constructor(
     private route: ActivatedRoute,
     private sessionService: SessionHttpClientService,
-    private spotifyService: SpotifyService,private router: Router
+    private spotifyService: SpotifyService,
+    private router: Router,
+    private queueService: QueueServiceService
   ) {
     this.iconName = "play_circle_filled";
   }
- 
 
   toggle() {
     if (this.iconName == "play_circle_filled") {
@@ -50,9 +54,17 @@ export class RoomComponent implements OnInit {
         const myStorage = window.localStorage;
         const access_token = params["access_token"];
         const refresh_token = params["refresh_token"];
-  
+
         myStorage.setItem("access_token", access_token);
       });
+    });
+    this.spotifyService.currentSong().subscribe(res => {
+      console.log(res.item.album.images);
+      this.currentSong = {
+        artist: res.item.artists[0].name,
+        name: res.item.name,
+        image: res.item.album.images[1].url
+      };
     });
   }
 
@@ -62,17 +74,54 @@ export class RoomComponent implements OnInit {
     });
   }
   fastForward() {
-    this.spotifyService.nextSong().subscribe(res => {
-      console.log(res);
+    this.queueService.getSongs().subscribe(res => {
+      if (res.length != 0) {
+        console.log(res);
+
+        const nextSong = res[0];
+        this.spotifyService.playSong(nextSong.uri).subscribe(res => {
+          this.queueService.removeSong(nextSong).subscribe(res => {
+            setTimeout(() => {
+              this.spotifyService.currentSong().subscribe(r => {
+                this.currentSong = {
+                  artist: r.item.artists[0].name,
+                  name: r.item.name,
+                  image: r.item.album.images[1].url
+                };
+              });
+            }, 3000);
+          });
+        });
+      } else {
+        this.spotifyService.nextSong().subscribe(res => {
+          setTimeout(() => {
+            this.spotifyService.currentSong().subscribe(r => {
+              this.currentSong = {
+                artist: r.item.artists[0].name,
+                name: r.item.name,
+                image: r.item.album.images[1].url
+              };
+            });
+          }, 3000);
+        });
+      }
     });
   }
   previousTrack() {
     this.spotifyService.previousSong().subscribe(res => {
-      console.log(res);
+      setTimeout(() => {
+        this.spotifyService.currentSong().subscribe(r => {
+          this.currentSong = {
+            artist: r.item.artists[0].name,
+            name: r.item.name,
+            image: r.item.album.images[1].url
+          };
+        });
+      }, 3000);
     });
   }
 
-  openSearch(){
-    this.router.navigate(['/search']);
+  openSearch() {
+    this.router.navigate(["/search"]);
   }
 }

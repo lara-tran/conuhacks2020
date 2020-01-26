@@ -18,7 +18,7 @@ export class QueueServiceService {
     return this.http.get<Array<Song>>(this.url+'/partyhub');
   }
   removeSong(song: Song){
-    return this.http.delete(this.url);
+    return this.http.post(this.url +`/delete`, song);
 
   }
 

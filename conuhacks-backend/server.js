@@ -54,7 +54,7 @@ app.post("/session/create", async (req, res) => {
 
 //get sessions
 app.get("/session/:sessionName", async (req, res) => {
-  const session = await sessionModel.find({sessionName: req.sessionName});
+  const session = await sessionModel.findOne({sessionName: req.params.sessionName});
 
   try {
     res.send(session);
@@ -78,16 +78,17 @@ app.post("/session/join", async (req, res) => {
 });
 //leave session
 app.post("/session/leave", async (req, res) => {
-  // const session = await sessionModel.findOneAndUpdate({name: req.body.sessionName}, {$pull: {guests: req.body.guestName}});
-  const session = await sessionModel.findOne({ name: req.body.sessionName });
+  let session = await sessionModel.findOne({ sessionName: req.body.sessionName });
+  console.log(req.body);
   try {
-    if (session.hostName === req.body.guestName) {
-      await sessionModel.deleteOne({ name: req.body.sessionName });
-    } else {
+    if (session.hostName !== req.body.guestName) {
       session = await sessionModel.findOneAndUpdate(
         { name: req.body.sessionName },
         { $pull: { guests: req.body.guestName } }
       );
+    } else {
+      await sessionModel.deleteOne({ name: req.body.sessionName });
+
     }
     await session.save();
   } catch (err) {
@@ -95,10 +96,10 @@ app.post("/session/leave", async (req, res) => {
   }
 });
 app.delete("/session", async (req, res) => {
-  const session = await sessionModel.findOne({ name: req.body.sessionName });
+  const session = await sessionModel.findOne({ sessionName: req.body.sessionName });
   if (session) {
     try {
-      await sessionModel.deleteOne({ name: req.body.sessionName });
+      await sessionModel.deleteOne({ sessionName: req.body.sessionName });
 
       await session.save();
     } catch (err) {
@@ -131,8 +132,8 @@ app.get("/queue/:sessionName", async (req, res) => {
 });
 
 //remove
-app.delete("/queue", async(req,res)=> {
-  const song = await queueModel.findOne({ songName: req.body.songName, artist: req.body.artist, sessionName:req.body.sessionName});
+app.post("/queue/delete", async(req,res)=> {
+  const song = await queueModel.findOne({ songName: req.body.songName, artistName: req.body.artistName, sessionName:req.body.sessionName});
   if(song){
     try{
       await queueModel.deleteOne(song);

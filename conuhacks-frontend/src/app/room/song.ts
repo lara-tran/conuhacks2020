@@ -1,6 +1,6 @@
 export interface Song{
-    artist: string;
+    artistName: string;
     sessionName: string;
     songName: Array<string>;
+    uri: string;
   }
-  
