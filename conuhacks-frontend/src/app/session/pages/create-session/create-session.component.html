@@ -1,0 +1,25 @@
+<div class="container" align="center">
+    <div class="title">
+        <h1>LINK YOUR MUSIC</h1>
+    </div>
+    <mat-card class="create-session">
+        <div class="header">
+            <h2>Create A Session</h2>
+        </div>
+        <mat-card-content>
+            <form>
+                <div class="form-input">
+                        <mat-form-field>
+                                <input [(ngModel)]="hostName" name="hostName" matInput placeholder="Host Name">
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input [(ngModel)]="sessionName" name="sessionName" matInput placeholder="Session Name">
+                            </mat-form-field>
+                </div>
+
+            </form>
+        </mat-card-content>
+        <button (click)="submitForm()" class="home-button" routerLink="/create-session" mat-flat-button color="primary">CREATE</button>
+    </mat-card>
+
+</div>

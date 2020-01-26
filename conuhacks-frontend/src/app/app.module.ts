@@ -5,7 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import {MatButtonModule} from '@angular/material/button';
-import { HomeComponent } from './home/home.component';
+import {HomeComponent} from './home/home.component';
+import {SessionModule } from './session/session.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 
 @NgModule({
   declarations: [
@@ -16,6 +20,7 @@ import { HomeComponent } from './home/home.component';
     BrowserModule,
     AppRoutingModule,
     MatButtonModule,
+    SessionModule,BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
