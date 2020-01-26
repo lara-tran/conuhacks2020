@@ -6,7 +6,7 @@ import { JoinSessionComponent } from './pages/join-session/join-session.componen
 
 const routes: Routes = [
 {path:'create-session', component:CreateSessionComponent},
-{path: 'join-session', component:JoinSessionComponent}
+{path:'join-session', component:JoinSessionComponent}
 ];
 
 @NgModule({
