@@ -13,21 +13,22 @@
         margin-bottom: 100px; 
         margin-top: 70px;
     }
-
-
-        .join-session{
-
-            .card-title{
+    .join-session{
+        width: 50%;
+        justify-content: center;
+        align-items: center;
+        margin: 10px auto;
+        .card-title{
             align-content: center;
             }
-            .form-input{
+        .form-input{
                 display: flex;
                 align-items: center;
                 flex-direction: column;
-                }
         }
-    
+    }
 }
+
 
 @media (max-width: 600px){
 
