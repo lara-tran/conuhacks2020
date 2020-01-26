@@ -1,17 +1,20 @@
 <html>
-<div class= "inline">    
-    <div class="inline-left-spacebetween" > 
-        <div class="user" *ngFor="let guest of guestList">
+<div class= "inline">
+    <div *ngIf="session" class="inline-left-spacebetween" >
+        <div class="user" *ngFor="let guest of session?.guests">
             <app-circle [guest]= guest></app-circle>
         </div>
+        <div  class="user" >
+            <app-circle [guest]= "session?.hostName"></app-circle>
+        </div>
     </div>
-    <div class="inline-right"> 
+    <div class="inline-right">
     <img id="exit" src= "../../assets/exit.svg">
     </div>
 </div>
 <div class="justify-center">
-<mat-card class="mat-card">
-    <mat-card-title class="inner-mat-card">Session Name</mat-card-title>
+<mat-card *ngIf="session" class="mat-card">
+    <mat-card-title class="inner-mat-card">{{session?.sessionName}}</mat-card-title>
     <mat-card-subtitle class="inner-mat-card-song inner-mat-card">Song Name</mat-card-subtitle>
     <mat-card-subtitle class="inner-mat-card-name inner-mat-card">Artist Name</mat-card-subtitle>
     <img mat-card-image class="inner-mat-card" src="../../assets/exit.svg" alt="Photo of a Song">
@@ -24,7 +27,7 @@
         <button mat-button>
             <i class="material-icons">fast_rewind</i>
         </button>
-        <div class="box">    
+        <div class="box">
         <button mat-button (click)="toggle(this)" id="button">
             <mat-icon class="material-icon">{{iconName}}</mat-icon>
         </button>
@@ -43,4 +46,4 @@
         VIEW QUEUE
     </button>
 </div>
-</html>    
+</html>

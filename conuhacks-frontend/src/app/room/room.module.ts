@@ -5,6 +5,7 @@ import { RoomComponent } from './room.component';
 import { CircleComponent } from './circle/circle.component';
 import {MatCardModule, MatButtonModule, MatRippleModule} from '@angular/material';
 import {MatIconModule} from '@angular/material/icon';
+import { SessionModule } from '../session/session.module';
 
 
 
@@ -18,7 +19,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatCardModule,
     MatButtonModule,
     MatIconModule,
-    MatRippleModule
+    MatRippleModule,
+    SessionModule
   ],
   exports: [CircleComponent]
 })
