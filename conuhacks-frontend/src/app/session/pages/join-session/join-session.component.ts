@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JoinSessionComponent implements OnInit {
 
+  guestName: string;
+  sessionName: string;
   constructor() { }
 
   ngOnInit() {
+  }
+  submitForm(){
+    console.log(this.sessionName, this.guestName);
+    
   }
 
 }

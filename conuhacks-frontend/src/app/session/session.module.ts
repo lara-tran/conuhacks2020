@@ -6,6 +6,9 @@ import { JoinSessionComponent } from './pages/join-session/join-session.componen
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
+import { FormsModule } from '@angular/forms';
+
 
 
 
@@ -16,7 +19,8 @@ import {MatInputModule} from '@angular/material/input';
     SessionRoutingModule,
     MatCardModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,MatButtonModule,
+    FormsModule
   ]
 })
 export class SessionModule { }

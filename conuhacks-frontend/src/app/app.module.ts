@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import {MatButtonModule} from '@angular/material/button';
 import {HomeComponent} from './home/home.component';
 import {SessionModule } from './session/session.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 @NgModule({
@@ -18,7 +20,7 @@ import {SessionModule } from './session/session.module';
     BrowserModule,
     AppRoutingModule,
     MatButtonModule,
-    SessionModule
+    SessionModule,BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
